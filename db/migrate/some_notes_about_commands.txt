@@ -1,0 +1,3 @@
+add_index :products, :part_number
+
+add_foreign_key :articles, :authors - Это добавит новый внешний ключ к столбцу author_id таблицы articles.
