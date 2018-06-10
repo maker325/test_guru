@@ -38,8 +38,8 @@ Answer.create!([
                ])
 
 User.create!([
-               { name: 'user1' },
-               { name: 'user2' }
+               { name: 'user1', email: 'sdfd@sdf.com' },
+               { name: 'user2', email: 'qwed@sdf.com' }
              ])
 
 TestPassage.create!([

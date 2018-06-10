@@ -3,7 +3,7 @@ class Answer < ApplicationRecord
   scope :correct, -> { where(correct: true) }
 
   validates :body, presence: true
-  validate :validate_answers_count, on: :create
+  validate :validate_answer_count, on: :create
 
   def validate_answer_count
     error_info = 'There is more then 4 answers!'
