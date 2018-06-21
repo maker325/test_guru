@@ -8,6 +8,8 @@ class QuestionsController < ApplicationController
     render plain: @test.questions.inspect
   end
 
+  def new; end
+
   def show
     render plain: @questions.inspect
   end
