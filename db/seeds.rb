@@ -4,13 +4,18 @@ categories = Category.create!([
                                 { title: 'Frameworks' }
                               ])
 
+users = User.create!([
+                       { name: 'admin', email: 'admin@testguru.test' },
+                       { name: 'user1', email: 'user1@testguru.test' }
+                     ])
+
 tests = Test.create!([
-                       { title: 'HTML', category_id: categories[0].id },
-                       { title: 'CSS', category_id: categories[0].id },
-                       { title: 'Ruby', level: 2, category_id: categories[1].id },
-                       { title: 'Swift', level: 1, category_id: categories[1].id },
-                       { title: 'Rails', level: 3, category_id: categories[2].id },
-                       { title: 'Node', level: 2, category_id: categories[2].id }
+                       { title: 'HTML', category_id: categories[0].id, author_id: users[0].id },
+                       { title: 'CSS', category_id: categories[0].id, author_id: users[0].id },
+                       { title: 'Ruby', level: 2, category_id: categories[1].id, author_id: users[0].id },
+                       { title: 'Swift', level: 1, category_id: categories[1].id, author_id: users[0].id },
+                       { title: 'Rails', level: 3, category_id: categories[2].id, author_id: users[0].id },
+                       { title: 'Node', level: 2, category_id: categories[2].id, author_id: users[1].id }
                      ])
 
 questions = Question.create!([
@@ -36,11 +41,6 @@ Answer.create!([
                  { body: 'English', question_id: questions[5].id },
                  { body: 'JavaScript', correct: true, question_id: questions[5].id }
                ])
-
-User.create!([
-               { name: 'user1', email: 'sdfd@sdf.com' },
-               { name: 'user2', email: 'qwed@sdf.com' }
-             ])
 
 TestPassage.create!([
                       { user_id: 1, test_id: 1 },
