@@ -1,0 +1,11 @@
+<% if @question.errors.present? %>
+  <div>
+    <h2><%= pluralize(@question.errors.count, 'error')%> detected:</h2>
+
+    <ul>
+      <% @question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
