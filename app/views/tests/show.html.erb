@@ -1,0 +1,19 @@
+<p>
+  <strong>Name of the test:</strong>
+  <%= @test.title %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @test.level %>
+</p>
+
+<table>
+  <tr>
+    <th>Questions:</th>
+    <th colspan="3">Actions</th>
+  </tr>
+    <%= render @test.questions %>
+</table>
+<%= link_to 'Add a new question', new_test_question_path(@test) %> <br>
+<%= link_to 'Back', tests_path %>
