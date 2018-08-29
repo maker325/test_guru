@@ -7,6 +7,6 @@ class Answer < ApplicationRecord
 
   def validate_answer_count
     error_info = 'There is more then 4 answers!'
-    errors.add(:question, error_info) if question.answers.size >= 4
+    errors.add(:question, error_info) if question.answers.size > 4
   end
 end
