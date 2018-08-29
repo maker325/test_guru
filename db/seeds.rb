@@ -1,45 +1,50 @@
 categories = Category.create!([
                                 { title: 'Frontend' },
                                 { title: 'Backend' },
-                                { title: 'Machine Learning' }
+                                { title: 'Frameworks' }
                               ])
 
 users = User.create!([
-                       { first_name: 'Юрий', last_name: 'Петров', email: 'YuriPetrov@gmail.com' }
+                       { name: 'admin', email: 'admin@testguru.test' },
+                       { name: 'user1', email: 'user1@testguru.test' }
                      ])
 
 tests = Test.create!([
-                       { title: 'Ruby on Rails', level: 2, author_id: users[0].id, category_id: categories[1].id },
-                       { title: 'NodeJS', level: 2, author_id: users[0].id, category_id: categories[1].id },
-                       { title: 'Python', level: 1, author_id: users[0].id, category_id: categories[2].id },
-                       { title: 'Javascript', level: 1, author_id: users[0].id, category_id: categories[0].id }
+                       { title: 'HTML', category_id: categories[0].id, author_id: users[0].id },
+                       { title: 'CSS', category_id: categories[0].id, author_id: users[0].id },
+                       { title: 'Ruby', level: 2, category_id: categories[1].id, author_id: users[0].id },
+                       { title: 'Swift', level: 1, category_id: categories[1].id, author_id: users[0].id },
+                       { title: 'Rails', level: 3, category_id: categories[2].id, author_id: users[0].id },
+                       { title: 'Node', level: 2, category_id: categories[2].id, author_id: users[1].id }
                      ])
 
 questions = Question.create!([
-                               { body: 'Зачем нужен Ruby on Rails?', test_id: tests[0].id },
-                               { body: 'Зачем нужен NodeJS?', test_id: tests[1].id },
-                               { body: 'Зачем нужен Python?', test_id: tests[2].id },
-                               { body: 'Зачем нужен Javascript?', test_id: tests[3].id }
+                               { body: 'Is HTML for web?', test_id: tests[0].id },
+                               { body: 'What version of CSS is actual?', test_id: tests[1].id },
+                               { body: 'What is Ruby?', test_id: tests[2].id },
+                               { body: 'Swift is game by Nintendo, isn`t it?', test_id: tests[3].id },
+                               { body: 'What is Rails?', test_id: tests[4].id },
+                               { body: 'What language support Node?', test_id: tests[5].id }
                              ])
 
 Answer.create!([
-                 { body: 'Правильный ответ', correct: true, question_id: questions[0].id },
-                 { body: 'Неправильный ответ 1', question_id: questions[0].id },
-                 { body: 'Неправильный ответ 2', question_id: questions[0].id },
-                 { body: 'Правильный ответ', correct: true, question_id: questions[1].id },
-                 { body: 'Неправильный ответ 1', question_id: questions[1].id },
-                 { body: 'Неправильный ответ 2', question_id: questions[1].id },
-                 { body: 'Правильный ответ', correct: true, question_id: questions[2].id },
-                 { body: 'Неправильный ответ 1', question_id: questions[2].id },
-                 { body: 'Неправильный ответ 2', question_id: questions[2].id },
-                 { body: 'Правильный ответ', correct: true, question_id: questions[3].id },
-                 { body: 'Неправильный ответ 1', question_id: questions[3].id },
-                 { body: 'Неправильный ответ 2', question_id: questions[3].id }
+                 { body: 'No', question_id: questions[0].id },
+                 { body: 'Yes', correct: true, question_id: questions[0].id },
+                 { body: '2', question_id: questions[1].id },
+                 { body: '3', correct: true, question_id: questions[1].id },
+                 { body: 'Mineral', question_id: questions[2].id },
+                 { body: 'Programming language', correct: true, question_id: questions[2].id },
+                 { body: 'Yes', question_id: questions[3].id },
+                 { body: 'No', correct: true, question_id: questions[3].id },
+                 { body: 'Road for trains', question_id: questions[4].id },
+                 { body: 'Ruby`s framework', correct: true, question_id: questions[4].id },
+                 { body: 'English', question_id: questions[5].id },
+                 { body: 'JavaScript', correct: true, question_id: questions[5].id }
                ])
 
 TestPassage.create!([
-                      { user_id: users[0].id, test_id: tests[0].id },
-                      { user_id: users[0].id, test_id: tests[1].id },
-                      { user_id: users[0].id, test_id: tests[2].id },
-                      { user_id: users[0].id, test_id: tests[3].id }
+                      { user_id: 1, test_id: 1 },
+                      { user_id: 1, test_id: 2 },
+                      { user_id: 2, test_id: 3 },
+                      { user_id: 2, test_id: 6 }
                     ])
