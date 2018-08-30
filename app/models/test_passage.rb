@@ -4,15 +4,15 @@ class TestPassage < ApplicationRecord
   belongs_to :current_question, class_name: 'Question', optional: true
 
   before_validation :before_validation_set_first_question, on: :create
-  before_save :before_save_set_next_question
+  before_update :before_save_set_next_question
 
   def accept!(answer_ids)
-    self.correct_questions += 1 if correct_answer?(answer_ids)
+    self.correct_question += 1 if correct_answer?(answer_ids)
     save!
   end
 
   def correct_answers_percent
-    (correct_questions * 100) / test.questions.size
+    correct_question.to_f * 100 / test.questions.count
   end
 
   def passed?
@@ -20,11 +20,19 @@ class TestPassage < ApplicationRecord
   end
 
   def question_number
-    test.questions.size - next_question.size
+    if current_question.nil?
+      question_count
+    else
+      test.questions.index(current_question) + 1
+    end
   end
 
   def completed?
     current_question.nil?
+  end
+
+  def questions_sum
+    test.questions.size
   end
 
   private
@@ -47,5 +55,9 @@ class TestPassage < ApplicationRecord
 
   def next_question
     test.questions.order(:id).where('id > ?', current_question.id).first
+  end
+
+  def correct_answers
+    current_question.answers.correct
   end
 end

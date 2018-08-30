@@ -1,3 +1,4 @@
 <h1>The <%= @test_passage.test.title %> Test was Complited!</h1>
-<p>Result: <%= test_passage_result(@test_passage.correct_answers_percent) %></p>
+<h2>Congratulation! You finished the test!</h2>
+<p>Your result is : <%= test_passage_result(@test_passage.correct_answers_percent) %></p>
 <%= link_to 'Back to Tests', tests_path %>
