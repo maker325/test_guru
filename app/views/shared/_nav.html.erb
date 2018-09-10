@@ -1,0 +1,13 @@
+<div class="nav user">
+  <span>
+  <%= link_to 'TestGuru', root_path %>
+  </span>
+  <% if signed_in? %>
+    <p>Welcome, <b><%= current_user.name %> Guru </b></p>
+      <p2><%= link_to 'Sign out', signout_path, method: :delete %></p2>
+
+  <% else %>
+      <p><%= link_to 'Sign in', signin_path %></p>
+      <p2><%= link_to 'Register', register_path %></p2>
+  <% end %>
+</div>
